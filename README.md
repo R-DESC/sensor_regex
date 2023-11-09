@@ -1,8 +1,8 @@
 # sensor_regex
 
-Regex expressions for parsing oceanographic, navigation, and meteorological sensor ASCII data messages.
+Regex (Regular Expression) patterns for parsing oceanographic, navigation, and meteorological sensor ASCII data messages.
 
-To parse messages (data strings) received from sensors, the format of each message must first be described. Regex expressions for sensors used on oceanographic research vessels are catalogued here.
+To parse messages (data strings) received from sensors, the format of each message must first be described. Regex patterns for sensors used on oceanographic research vessels are catalogued here.
 
 Note that for sensors that output multiple message types (like GNSS sensors), it is necessary to write the regex patterns in such a way that they only match a single message type.  
 
