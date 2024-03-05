@@ -1,0 +1,21 @@
+sensors:
+    model: MGC R3
+      pseudonyms:
+      - MGC R3
+      manufacturer: Kongsberg Maritime
+      description: Gyrocompass
+      message_samples:
+      - '$MGHDT,349.59,T*1A'
+      - '$MGHCR,349.6,A,A,-0.0*76'
+      - '$MGTHS,349.59,A*18'
+      - '$MGROT,1.2,A*2F'
+      - '$PSXN,20,2,2,0,0*3B'
+      - '$PSXN,23,-0.514,0.787,349.57,0.007*26'
+      message_regex_patterns:
+      - '^\WMGHDT,(?P<heading>\d+\.\d+),T\*(?P<checksum>[0-9A-F]{2})$'
+      - '^\WMGHCR'
+      - '^\WMGTHS,(?P<heading_true_actual>\d+\.\d+),(?P<heading_status>[AEMSV])\*(?P<checksum>[0-9A-F]{2})$'
+      - '^\WMGROT,(?P<rate_of_turn>\d+\.\d+),(?P<rot_status>[AV])\*(?P<checksum>[0-9A-F]{2})$'
+      - '^\WPSXN,20,(?P<horiz_qual>\d*),(?P<hgt_qual>\d*),(?P<head_qual>\d*),(?P<rp_qual>\d*)\*(?P<checksum>[0-9A-F]{2})$'
+      - '^\WPSXN,23,(?P<roll>\-?\d+\.\d+)?,(?P<pitch>\-?\d+\.\d+)?,(?P<head>\-?\d+\.\d+)?,(?P<heave>\-?\d+\.\d+)?\*(?P<checksum>[0-9A-F]{2})$'
+    
