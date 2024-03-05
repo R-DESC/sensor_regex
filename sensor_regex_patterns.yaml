@@ -1,9 +1,9 @@
 sensors:
-    model: MGC R3
+    model: MGC R3  
+      manufacturer: Kongsberg Maritime
+      description: Motion sensing and gyro compass
       pseudonyms:
       - MGC R3
-      manufacturer: Kongsberg Maritime
-      description: Gyrocompass
       message_samples:
       - '$MGHDT,349.59,T*1A'
       - '$MGHCR,349.6,A,A,-0.0*76'
