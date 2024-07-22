@@ -1,21 +1,116 @@
+---
 sensors:
-    model: MGC R3  
-      manufacturer: Kongsberg Maritime
-      description: Motion sensing and gyro compass
-      pseudonyms:
-      - MGC R3
-      message_samples:
-      - '$MGHDT,349.59,T*1A'
-      - '$MGHCR,349.6,A,A,-0.0*76'
-      - '$MGTHS,349.59,A*18'
-      - '$MGROT,1.2,A*2F'
-      - '$PSXN,20,2,2,0,0*3B'
-      - '$PSXN,23,-0.514,0.787,349.57,0.007*26'
-      message_regex_patterns:
-      - '^\WMGHDT,(?P<heading>\d+\.\d+),T\*(?P<checksum>[0-9A-F]{2})$'
-      - '^\WMGHCR'
-      - '^\WMGTHS,(?P<heading_true_actual>\d+\.\d+),(?P<heading_status>[AEMSV])\*(?P<checksum>[0-9A-F]{2})$'
-      - '^\WMGROT,(?P<rate_of_turn>\d+\.\d+),(?P<rot_status>[AV])\*(?P<checksum>[0-9A-F]{2})$'
-      - '^\WPSXN,20,(?P<horiz_qual>\d*),(?P<hgt_qual>\d*),(?P<head_qual>\d*),(?P<rp_qual>\d*)\*(?P<checksum>[0-9A-F]{2})$'
-      - '^\WPSXN,23,(?P<roll>\-?\d+\.\d+)?,(?P<pitch>\-?\d+\.\d+)?,(?P<head>\-?\d+\.\d+)?,(?P<heave>\-?\d+\.\d+)?\*(?P<checksum>[0-9A-F]{2})$'
-    
+
+    #  ---------------------------------------------------------
+    #  Sensors are organized in this file by manufacturer.
+    #  Manufacturer sections are listed in alphabetical order.
+    #  Sensor models are listed in alphabetical order within the
+    #     appropriate manufacturer section.
+    #  ---------------------------------------------------------
+
+    # ---------------------------------------------------------
+    # Gill Instruments Ltd.
+
+    'Wind Observer':
+        NERC_L22_label:
+        pseudonyms:
+        manufacturers:
+        - Gill Instruments Ltd.
+        message_samples:
+        - 'A,313,014.32,M,60,0D'
+        message_regex_patterns:
+        - '^(?P<unit_id>\w+),(?P<direction>\d+),(?P<speed>\d+\.\d+),(?P<units>\w),(?P<heating_status>\d+),(?P<checksum>[0-9A-F]{2})$'
+
+    'WindMaster Pro':
+        NERC_L22_label: WindMaster pro anemometer
+        pseudonyms:
+        manufacturers:
+        - Gill Instruments Ltd.
+        message_samples:
+        - 'B, -000.08, +000.03, +000.01, M, +344.17, +020.92, 00, 3A'
+        message_regex_patterns:
+        - '^(?P<unit_id>\w+), (?P<U_speed>[-+]\d+\.\d+), (?P<V_speed>[-+]\d+\.\d+), (?P<W_speed>[-+]\d+\.\d+), M, (?P<SOS>[-+]\d+\.\d+), (?P<Sonic_temp>[-+]\d+\.\d+), (?P<Status>\d{2}), (?P<checksum>[0-9A-F]{2})$'
+
+
+    # ---------------------------------------------------------
+    # Kongsberg
+
+    'MGC R3':
+        NERC_L22_label: Kongsberg Seatex MGC R3
+        pseudonyms:
+        manufacturers:
+          - Kongsberg Maritime AS
+          - Kongsberg Seatex
+        message_samples:
+          - '$MGHDT,349.59,T*1A'
+          - '$MGHCR,349.6,A,A,-0.0*76'
+          - '$MGTHS,349.59,A*18'
+          - '$MGROT,1.2,A*2F'
+          - '$PSXN,20,2,2,0,0*3B'
+          - '$PSXN,23,-0.514,0.787,349.57,0.007*26'
+        message_regex_patterns:
+          - '^\WMGHDT,(?P<heading>\d+\.\d+),T\*(?P<checksum>[0-9A-F]{2})$'
+          - '^\WMGHCR'
+          - '^\WMGTHS,(?P<heading_true_actual>\d+\.\d+),(?P<heading_status>[AEMSV])\*(?P<checksum>[0-9A-F]{2})$'
+          - '^\WMGROT,(?P<rate_of_turn>\d+\.\d+),(?P<rot_status>[AV])\*(?P<checksum>[0-9A-F]{2})$'
+          - '^\WPSXN,20,(?P<horiz_qual>\d*),(?P<hgt_qual>\d*),(?P<head_qual>\d*),(?P<rp_qual>\d*)\*(?P<checksum>[0-9A-F]{2})$'
+          - '^\WPSXN,23,(?P<roll>\-?\d+\.\d+)?,(?P<pitch>\-?\d+\.\d+)?,(?P<head>\-?\d+\.\d+)?,(?P<heave>\-?\d+\.\d+)?\*(?P<checksum>[0-9A-F]{2})$'
+
+
+    # ---------------------------------------------------------
+    # SeaPath
+
+    'SeaPath 380+':
+        NERC_L22_label:
+        pseudonyms:
+        manufacturers:
+        - SeaPath
+        message_samples:
+        - '$GPGGA,172814.0,3723.46587704,N,12202.26957864,W,2,6,1.2,18.893,M,-25.669,M,2.0,0031*4F'
+        - '$GPHDT,123.456,T*00'
+        - '$GPVTG,123.4,T,140.1,M,0.00,N,0.00,K*4E'
+        - '$GPZDA,172809.456,12,07,1996,00,00*45'
+        message_regex_patterns:
+        - '^\WGPGGA,(?P<utc_position_fix>\d+\.\d+),(?P<latitude>\d+\.\d+),(?P<latitude_dir>[NS]),(?P<longitude>\d+\.\d+),(?P<longitude_dir>[EW]),(?P<gps_quality_indicator>\d+),(?P<num_sat_vis>\d+),(?P<hdop>\d+\.\d+),(?P<ortho_height>\-?\d+\.\d+),M,(?P<geoid_separation>\-?\d+\.\d+),M,(?P<age>[\d\.]*),\d{4}\*(?P<checksum>[0-9A-F]{2})$'
+        - '^\WGPHDT,(?P<heading>\d+\.\d+),T\*(?P<checksum>[0-9A-F]{2})$'
+        - '^\WGPVTG,(?P<cog_true>\d+\.\d+)?,T,(?P<cog_magnetic>\d+\.\d+)?,M,(?P<sog_knots>\d+\.\d+)?,N,(?P<sog_kmhr>\d+\.\d+)?,K,?\w*\*(?P<checksum>[0-9A-F]{2})$'
+        - '^\WGPZDA,(?P<utc_time>\d+\.\d+),(?P<day>\d{2}),(?P<month>\d{2}),(?P<year>\d{4}),(?P<tzoffset_hours>\d{0,2}),(?P<tzoffset_mins>\d{0,2})\*(?P<checksum>[0-9A-F]{2})$'
+
+
+    # ---------------------------------------------------------
+    # Trimble
+
+    'ABX-Two GNSS':
+        NERC_L22_label:
+        pseudonyms:
+        manufacturers:
+        - Trimble
+        message_samples:
+        - '30.36053581666666,-89.098027065,249.44,0.0,0.0,0.0057,0.51808,-0.06371'
+        message_regex_patterns:
+        - '(?P<latitude>\-?\d+\.\d+),(?P<longitude>\-?\d+\.\d+),(?P<heading>\d+\.\d+),(?P<cog_true>\d+\.\d+),(?P<sog_true>\d+\.\d+),(?P<heave>\-?\d+\.\d+),(?P<pitch>\-?\d+\.\d+),(?P<roll>\-?\d+\.\d+)'
+
+
+    # ---------------------------------------------------------
+    # Vaisala
+
+    'FD71P':
+        NERC_L22_label: Vaisala FD70 Series
+        pseudonyms:
+        - Present Weather
+        manufacturers:
+        - Vaisala
+        message_samples:
+        - 'REHZ'
+        - 'DZ'
+        - '#FD 1#2021-11-09T16:52:23Z 00 2423 1626 R /// /// 62 4 4 2.76 0.11 0 20.8 6.3 39.0 /////'
+        - '1-00III000000-0000000000000000000000000-00000000-0000000+000-0000000+000-0000000+000-0000+00000-0000000+000-0000000+000-0000+00000'
+        - '2.734 377 912 680 846 140 149 1 33 3 2 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0'
+        - '30.8 718 370 263 230 226 251 213 191 177 189 141 94 64 44 8 11 5 2 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0'
+        message_regex_patterns:
+        - '^RE(?P<recent_METAR>\w{2,4})$'
+        - '^(?!RE)(?P<present_METAR>\w{2,4})$'
+        - '^\WFD\s+(?P<unit_ID>\d)\W+(?P<instrument_datetime>[0-9TZ:\-]*)\s+(?P<oha>\w)(?P<oma>\w)\s+(?P<MOR_1min>\d+)\s+(?P<MOR_10min>\d+)\s+(?P<precip_type1>\S+)\s+(?P<precip_type2>\S+)\s+(?P<precip_type3>\S+)\s+(?P<SYNOP_instant>\d+)\s+(?P<SYNOP_15min>\d+)\s+(?P<SYNOP_1hr>\d+)\s+(?P<precip_intensity>[\d\.]+)\s+(?P<precip_accumulation>[\d\.]+)\s+(?P<snow_accumulation>\d+)\s+(?P<air_temp>[\d\.]+)\s+(?P<dewpt_temp>[\d\.]+)\s+(?P<relative_humidity>[\d\.]+)\s+.{5}$'
+        - '^\d\-(?P<status1>\w{11})\-(?P<status2>\w{25})\-(?P<status3>\w{8})\-(?P<status4>\w{7}\+\w{3})\-(?P<status5>\w{7}\+\w{3})\-(?P<status6>\w{7}\+\w{3})\-(?P<status7>\w{4}\+\w{5})\-(?P<status8>\w{7}\+\w{3})\-(?P<status9>\w{7}\+\w{3})\-0000\+00000$'
+        - '^\s*(?P<kinetic_energy>\-?\d+\.\d\d\d)\s+(?P<fall_speed>(\d+\s+){25}\d+)$'
+        - '^\s*(?P<reflectivity>\-?\d+\.\d)\s+(?P<size>(\d+\s+){40}\d+)$'
