@@ -6,7 +6,143 @@ sensors:
     #  Manufacturer sections are listed in alphabetical order.
     #  Sensor models are listed in alphabetical order within the
     #     appropriate manufacturer section.
+    #  At the end of the file is a list of assorted GPS NMEA strings.
     #  ---------------------------------------------------------
+
+
+    # ---------------------------------------------------------
+    # Aanderaa Data Instruments AS
+
+    '4300':
+        NERC_L22_label: 'Aanderaa 4330 and 4330F oxygen optode'
+        pseudonyms:
+        manufacturers:
+        - 'Aanderaa Data Instruments AS'
+        message_samples:
+        - '4330,3594,503.7600,408.7601,109.8400,-0.1550,0.0000,-0.1741,30.1824,62.012229,-168.620039'
+        message_regex_patterns:
+        - '^\d+,\d+,(?P<oxy_concentration>\d+\.\d+),(?P<oxy_concentration_corr>\d+\.\d+),(?P<air_saturation>\d+\.\d+),(?P<temp>\-?\d+\.\d+),(?P<salinity_ref>\d+\.\d+),(?P<tsg_temp>\-?\d+\.\d+),(?P<tsg_sal>\d+\.\d+),(?P<latitude>\-?\d+\.\d+),(?P<longitude>\-?\d+\.\d+)$'
+
+
+    # ---------------------------------------------------------
+    # AML Oceanographic
+
+    'SV-Xchange':
+        NERC_L22_label: 'AML Oceanographic SV-Xchange sound velocity sensor'
+        pseudonyms:
+        manufacturers:
+        - 'AML Oceanographic'
+        - 'Applied Microsystems Limited'
+        message_samples:
+        - '1437.712'
+        message_regex_patterns:
+        - '^\s*(?P<sound_velocity>\d+\.\d+)$'
+
+
+    # ---------------------------------------------------------
+    # Bell Aerospace
+
+    'BGM-3':
+        NERC_L22_label: 'Bell Aerospace BGM 3 marine gravimeter'
+        pseudonyms:
+        manufacturers:
+        - 'Bell Aerospace'
+        - 'Bell Textron Inc.'
+        message_samples:
+        - '04:025409 00'
+        message_regex_patterns:
+        - '^(?P<interface_counter_period>\d+)\W(?P<raw_counts>\d+)\s+(?P<status>\d+)$'
+
+
+    # ---------------------------------------------------------
+    # Biospherical Instruments Inc.
+
+    'QSR-2150':
+        NERC_L22_label: 'Biospherical Instruments QSR 2150 surface reference radiometer'
+        pseudonyms:
+        manufacturers:
+        - 'Biospherical Instruments Inc.'
+        message_samples:
+        - '0.018252, 21.45, 7.600'
+        message_regex_patterns:
+        - '^(?P<PAR_volts>\d+\.\d+), (?P<int_temp>\-?\d+\.\d+), (?P<voltage_in>\d+\.\d+)$'
+
+    'QCR-2150':
+        NERC_L22_label: 'Biospherical QCR-2150 surface PAR sensor'
+        pseudonyms:
+        manufacturers:
+        - 'Biospherical Instruments Inc.'
+        message_samples:
+        - '0.018252, 21.45, 7.600'
+        message_regex_patterns:
+        - '^(?P<PAR_volts>\d+\.\d+), (?P<int_temp>\-?\d+\.\d+), (?P<voltage_in>\d+\.\d+)$'
+
+    'QSP-2150':
+        NERC_L22_label: 'Biospherical Instruments QSP-2150 underwater PAR sensor'
+        pseudonyms:
+        manufacturers:
+        - 'Biospherical Instruments Inc.'
+        message_samples:
+        - '0.018252, 21.45, 7.600'
+        message_regex_patterns:
+        - '^(?P<PAR_volts>\d+\.\d+), (?P<int_temp>\-?\d+\.\d+), (?P<voltage_in>\d+\.\d+)$'
+
+    'QCP-2150':
+        NERC_L22_label: 'Biospherical Instruments QCP-2150 [underwater] PAR sensor'
+        pseudonyms:
+        manufacturers:
+        - 'Biospherical Instruments Inc.'
+        message_samples:
+        - '0.018252, 21.45, 7.600'
+        message_regex_patterns:
+        - '^(?P<PAR_volts>\d+\.\d+), (?P<int_temp>\-?\d+\.\d+), (?P<voltage_in>\d+\.\d+)$'
+
+
+    # ---------------------------------------------------------
+    # Dynamic Gravity Systems
+
+    'AT1M':
+        NERC_L22_label: 'Dynamic Gravity Systems AT1 marine gravimeter'
+        pseudonyms:
+        manufacturers:
+        - 'Dynamic Gravity Systems'
+        message_samples:
+        - '12396.903519694097,12378.065460704620, -0.031944755548, 0.103062641986, -0.980938351266, 52.268820625000, 16730, 4078072, 28.955870658333, 1.032059166667, 0.019980000000, 0.203270000000, -0.001610000000, 0.005390000000, 60.119500100000,-149.427380616667, 0.000000000000, 69.570000000000, 0.653532424053,2023,12,16,15,24,00.31,1608915'
+        message_regex_patterns:
+        - '^(?P<qc_gravity>\d+\.\d+),\s*(?P<gravity>\d+\.\d+),\s*(?P<long_accelerometer>\-?\d+\.\d+),\s*(?P<cross_accelerometer>\-?\d+\.\d+),\s*(?P<beam>\-?\d+\.\d+),\s*(?P<sensor_temp>\-?\d+\.\d+),(?P<status>[^,]*),\s*(?P<checksum>\-?\d+),\s*(?P<pressure>\-?\d+\.\d+),\s*(?P<e_temp>\-?\d+\.\d+),\s*(?P<Ve>\-?\d+\.\d+),\s*(?P<Vcc>\-?\d+\.\d+),\s*(?P<Al>\-?\d+\.\d+),\s*(?P<Ax>\-?\d+\.\d+),\s*(?P<latitude>\-?\d+\.\d+),\s*(?P<longitude>\-?\d+\.\d+),\s*(?P<speed>\-?\d+\.\d+),\s*(?P<course>\-?\d+\.\d+),\s*(?P<vmond>\-?\d+\.\d+),(?P<year>\d{4}),(?P<month>\d{2}),(?P<day>\d{2}),(?P<hour>\d{2}),(?P<minute>\d{2}),(?P<second>\d{2}\.\d+),\s*(?P<numline>\-?\d+)$'
+
+
+    # ---------------------------------------------------------
+    # ELAC SONAR GmbH (Wartsila)
+
+    'LAZ 5100':
+        NERC_L22_label: 'Wärtsilä ELAC LAZ 5100 single-beam echosounder'
+        pseudonyms:
+        manufacturers:
+        - 'ELAC SONAR GmbH'
+        - 'Wärtsilä Corporation'
+        - 'Wärtsilä ELAC Nautik GmbH'
+        message_samples:
+        - '$SDDPT,0005.9,-0.0,0010*6B'
+        - '$SDDBT,0019.3,f,0005.9,M,0003.2,F*30'
+        message_regex_patterns:
+
+
+    # ---------------------------------------------------------
+    # Furuno Electric Co. Ltd
+
+    'GP':
+        NERC_L22_label:
+        pseudonyms:
+        manufacturers:
+        - 'Furuno Electric Co. Ltd'
+        message_samples:
+        - '$GPGGA,175241,4135.1885,N,07124.6032,W,2,12,1.3,17.7,M,,M,,*79'
+        - '$GPVTG,315.5,T,329.8,M,0.0,N,0.1,K*4D'
+        message_regex_patterns:
+        - '^\WGPGGA,(?P<utc_position_fix>\d+),(?P<latitude>\d+\.\d+),(?P<latitude_dir>[NS]),(?P<longitude>\d+\.\d+),(?P<longitude_dir>[EW]),(?P<gps_quality_indicator>\d+),(?P<num_sat_vis>\d+),(?P<hdop>\d+\.\d+),(?P<ortho_height>\-?\d+\.\d+),M,(?P<geoid_separation>\-?\d+\.\d+)?,M,(?P<age>[\d\.]*)?,\*(?P<checksum>[0-9A-F]{2})$'
+        - '^\WGPVTG,(?P<cog_true>\d+\.\d+)?,T,(?P<cog_magnetic>\d+\.\d+)?,M,(?P<sog_knots>\d+\.\d+)?,N,(?P<sog_kmhr>\d+\.\d+)?,K\*(?P<checksum>[0-9A-F]{2})$'
+
 
     # ---------------------------------------------------------
     # Gill Instruments Ltd.
@@ -15,17 +151,31 @@ sensors:
         NERC_L22_label:
         pseudonyms:
         manufacturers:
-        - Gill Instruments Ltd.
+        - 'Gill Instruments Ltd.'
         message_samples:
         - 'A,313,014.32,M,60,0D'
+        - '#A,203,000.59,M,60,#05'   # here the pound character represents a non-printable character
         message_regex_patterns:
         - '^(?P<unit_id>\w+),(?P<direction>\d+),(?P<speed>\d+\.\d+),(?P<units>\w),(?P<heating_status>\d+),(?P<checksum>[0-9A-F]{2})$'
+        - '^\W(?P<unit_id>\w+),(?P<direction>\d+),(?P<speed>\d+\.\d+),(?P<units>\w),(?P<heating_status>\d+),\W(?P<checksum>[0-9A-F]{2})$'
 
-    'WindMaster Pro':
-        NERC_L22_label: WindMaster pro anemometer
+    'Wind Observer 75':
+        NERC_L22_label: 'Gill Instruments WindObserver 75 (heated) anemometer'
         pseudonyms:
         manufacturers:
-        - Gill Instruments Ltd.
+        - 'Gill Instruments Ltd.'
+        message_samples:
+        - 'A,313,014.32,M,60,0D'
+        - '#A,203,000.59,M,60,#05'   # here the pound character represents a non-printable character
+        message_regex_patterns:
+        - '^(?P<unit_id>\w+),(?P<direction>\d+),(?P<speed>\d+\.\d+),(?P<units>\w),(?P<heating_status>\d+),(?P<checksum>[0-9A-F]{2})$'
+        - '^\W(?P<unit_id>\w+),(?P<direction>\d+),(?P<speed>\d+\.\d+),(?P<units>\w),(?P<heating_status>\d+),\W(?P<checksum>[0-9A-F]{2})$'
+
+    'WindMaster Pro':
+        NERC_L22_label: 'Gill Instruments Ltd WindMaster pro ultrasonic anemometer'
+        pseudonyms:
+        manufacturers:
+        - 'Gill Instruments Ltd.'
         message_samples:
         - 'B, -000.08, +000.03, +000.01, M, +344.17, +020.92, 00, 3A'
         message_regex_patterns:
@@ -33,14 +183,102 @@ sensors:
 
 
     # ---------------------------------------------------------
-    # Kongsberg
+    # Heitronics (Wintronics Inc.)
 
-    'MGC R3':
-        NERC_L22_label: Kongsberg Seatex MGC R3
+    'CT15':
+        NERC_L22_label: 'Heitronics CT15 thermometer'
         pseudonyms:
         manufacturers:
-          - Kongsberg Maritime AS
-          - Kongsberg Seatex
+        - 'Heitronics'
+        - 'Wintronics Inc.'
+        message_samples:
+        - '-2.10 C'
+        message_regex_patterns:
+        - '^(?P<temperature>\-?\d+\.\d+)\s\w$'
+
+
+    # ---------------------------------------------------------
+    # Kipp and Zonen
+
+    'CVF4':
+        NERC_L22_label:
+        pseudonyms:
+        manufacturers:
+        - 'Kipp and Zonen'
+        message_samples:
+        message_regex_patterns:
+
+    'SGR4':
+        NERC_L22_label: 'Kipp and Zonen SGR4 pyrgeometer'
+        pseudonyms:
+        manufacturers:
+        - 'Kipp and Zonen'
+        message_samples:
+        - '605,100,1,0,1,20,20,0,220,120,0,0,0,0,0,0,907,3,0,909,0,0,2422,26400,1282,61616,0,0,0,1,0,1,0,2798,1,3,16,16,1,0,0,19,95,201,1,10'
+        - '611,133,-14.18,262.67,-8.81,12.05,1,1,0'
+        message_regex_patterns:
+        - '^(?P<device_type>\d+),(?P<datamodel_version>\d+),(?P<operational_mode>\d+),(?P<status_flags>\d+),(?P<scale_factor>\d+),(?P<sensor1_data>\d+),(?P<raw_sensor1_data>\d+),(?P<stdev_sensor1>\d+),(?P<body_temp_C>\d+),(?P<ext_power_sensor>\d+),(?P<sensor2_data>\d+),(?P<raw_sensor2_data>\d+),(?P<stdev_sensor2>\d+),(?P<body_temp_K>\d+),(?P<aux_input2>\d+),(?P<aux_input3>\d+),(?P<DAC_output_voltage>\d+),(?P<selected_DAC_input>\d+),(?P<ADC1_counts_MSB>\d+),(?P<ADC1_counts_LSB>\d+),(?P<ADC2_counts_MSB>\d+),(?P<ADC2_counts_LSB>\d+),(?P<ADC3_counts_MSB>\d+),(?P<ADC3_counts_LSB>\d+),(?P<ADC4_counts_MSB>\d+),(?P<ADC4_counts_LSB>\d+),(?P<error_code>\d+),(?P<protocol_error>\d+),(?P<error_count_pri01>\d+),(?P<error_count_pri02>\d+),(?P<restart_count>\d+),(?P<false_start_count>\d+),(?P<sensor_on_time>\d+),(?P<sensor_on_timel>\d+),(?P<def_scale_factor>\d+),(?P<factory_1>\d+),(?P<factory_2>\d+),(?P<factory_3>\d+),(?P<factory_4>\d+),(?P<factory_5>\d+),(?P<factory_6>\d+),(?P<batch_number>\d+),(?P<serial_number>\d+),(?P<software_version>\d+),(?P<hardware_version>\d+),(?P<node_id>\d+)$'
+        - '^\d+,\d+,(?P<net_rad>\-?\d+\.\d+),(?P<lw_down>\-?\d+\.\d+),(?P<body_temp>\-?\d+\.\d+),(?P<ext_volts>\d+\.\d+),\d+,(?P<op_mode>\d+),(?P<status>\d+)$'
+
+    'SMP21':
+        NERC_L22_label: 'Kipp and Zonen SMP21 pyranometer'
+        pseudonyms:
+        manufacturers:
+        - 'Kipp and Zonen'
+        message_samples:
+        - '605,100,1,0,1,20,20,0,220,120,0,0,0,0,0,0,907,3,0,909,0,0,2422,26400,1282,61616,0,0,0,1,0,1,0,2798,1,3,16,16,1,0,0,19,95,201,1,10'
+        - '605,195,14.1,-0.5,12.0,1,1,0'
+        message_regex_patterns:
+        - '^(?P<device_type>\d+),(?P<datamodel_version>\d+),(?P<operational_mode>\d+),(?P<status_flags>\d+),(?P<scale_factor>\d+),(?P<sensor1_data>\d+),(?P<raw_sensor1_data>\d+),(?P<stdev_sensor1>\d+),(?P<body_temp_C>\d+),(?P<ext_power_sensor>\d+),(?P<sensor2_data>\d+),(?P<raw_sensor2_data>\d+),(?P<stdev_sensor2>\d+),(?P<body_temp_K>\d+),(?P<aux_input2>\d+),(?P<aux_input3>\d+),(?P<DAC_output_voltage>\d+),(?P<selected_DAC_input>\d+),(?P<ADC1_counts_MSB>\d+),(?P<ADC1_counts_LSB>\d+),(?P<ADC2_counts_MSB>\d+),(?P<ADC2_counts_LSB>\d+),(?P<ADC3_counts_MSB>\d+),(?P<ADC3_counts_LSB>\d+),(?P<ADC4_counts_MSB>\d+),(?P<ADC4_counts_LSB>\d+),(?P<error_code>\d+),(?P<protocol_error>\d+),(?P<error_count_pri01>\d+),(?P<error_count_pri02>\d+),(?P<restart_count>\d+),(?P<false_start_count>\d+),(?P<sensor_on_time>\d+),(?P<sensor_on_timel>\d+),(?P<def_scale_factor>\d+),(?P<factory_1>\d+),(?P<factory_2>\d+),(?P<factory_3>\d+),(?P<factory_4>\d+),(?P<factory_5>\d+),(?P<factory_6>\d+),(?P<batch_number>\d+),(?P<serial_number>\d+),(?P<software_version>\d+),(?P<hardware_version>\d+),(?P<node_id>\d+)$'
+        - '^\d+,\d+,(?P<rad>\-?\d+\.\d+),(?P<body_temp>\-?\d+\.\d+),(?P<ext_volts>\d+\.\d+),\d+,(?P<op_mode>\d+),(?P<status>\d+)$'
+
+
+    # ---------------------------------------------------------
+    # Kongsberg Seatex (Kongsberg Maritime AS) (Simrad)
+
+    'EK80':
+        NERC_L22_label: 'Simrad EK80 echo sounder'
+        pseudonyms:
+        manufacturers:
+          - 'Simrad'
+          - 'Kongsberg Seatex'
+          - 'Kongsberg Maritime AS'
+          - 'Navico UK Ltd'
+        message_samples:
+          - '$EKDBS,335.75,f,102.34,M,55.96,F*14'
+        message_regex_patterns:
+          - '^\WEKDBS,(?P<depth_feet>\d+\.\d+)?,f,(?P<depth_meters>\d+\.\d+)?,M,(?P<depth_fathoms>\d+\.\d+)?,F\*(?P<checksum>[0-9A-F]{2})$'
+
+    'EM 304 MKII':
+        NERC_L22_label: 'Kongsberg EM 304 multibeam echosounder'
+        pseudonyms:
+        manufacturers:
+          - 'Kongsberg Seatex'
+          - 'Kongsberg Maritime AS'
+        message_samples:
+          - '$EMDPT,597.68,6.42,12000.0*4c'
+          - '$EMDBS,1981.96,f,604.101,M,330.327,F*14'
+        message_regex_patterns:
+          - '^\WEMDPT,(?P<depth_below_trans>\d+\.\d+),(?P<offset>\d+\.\d+),(?P<range>\d+\.\d+)\*(?P<checksum>[0-9a-f]{2})$'
+          - '^\WEMDBS,(?P<depth_feet>\d+\.\d+),f,(?P<depth_meters>\d+\.\d+),M,(?P<depth_fathoms>\d+\.\d+),F\*(?P<checksum>[0-9a-fA-F]{2})$'
+
+    'EM 710':
+        NERC_L22_label: 'Kongsberg EM 710 multibeam echosounder'
+        pseudonyms:
+        manufacturers:
+          - 'Kongsberg Seatex'
+          - 'Kongsberg Maritime AS'
+        message_samples:
+          - '$EMCTR,2014,12,09,00:42:28.954,25.616626,-172.513725,111.31,350*6B'
+        message_regex_patterns:
+          - '^\WEMCTR,(?P<sensor_datetime>\d{4},\d{2},\d{2},\d{2}:\d{2}:\d{2}\.\d{3}),(?P<latitude>\-?\d+\.\d+),(?P<longitude>\-?\d+\.\d+),(?P<depth>\d+\.\d+),(?P<num_beams>\d+)\*(?P<checksum>[0-9A-F]{2})$'
+
+    'MGC R3':
+        NERC_L22_label: 'Kongsberg Seatex MGC R3 gyrocompass inertial navigation system'
+        pseudonyms:
+        manufacturers:
+          - 'Kongsberg Seatex'
+          - 'Kongsberg Maritime AS'
         message_samples:
           - '$MGHDT,349.59,T*1A'
           - '$MGHCR,349.6,A,A,-0.0*76'
@@ -50,26 +288,44 @@ sensors:
           - '$PSXN,23,-0.514,0.787,349.57,0.007*26'
         message_regex_patterns:
           - '^\WMGHDT,(?P<heading>\d+\.\d+),T\*(?P<checksum>[0-9A-F]{2})$'
-          - '^\WMGHCR'
+          - '^\WMGHCR,(?P<heading>\d+\.\d+),.*\*(?P<checksum>[0-9A-F]{2})$'
           - '^\WMGTHS,(?P<heading_true_actual>\d+\.\d+),(?P<heading_status>[AEMSV])\*(?P<checksum>[0-9A-F]{2})$'
           - '^\WMGROT,(?P<rate_of_turn>\d+\.\d+),(?P<rot_status>[AV])\*(?P<checksum>[0-9A-F]{2})$'
           - '^\WPSXN,20,(?P<horiz_qual>\d*),(?P<hgt_qual>\d*),(?P<head_qual>\d*),(?P<rp_qual>\d*)\*(?P<checksum>[0-9A-F]{2})$'
           - '^\WPSXN,23,(?P<roll>\-?\d+\.\d+)?,(?P<pitch>\-?\d+\.\d+)?,(?P<head>\-?\d+\.\d+)?,(?P<heave>\-?\d+\.\d+)?\*(?P<checksum>[0-9A-F]{2})$'
 
-
-    # ---------------------------------------------------------
-    # SeaPath
-
-    'SeaPath 380+':
-        NERC_L22_label:
+    'Seapath 320+':
+        NERC_L22_label: 'Kongsberg Seatex Seapath 320+ Precise Heading, Attitude and Positioning Sensor'
         pseudonyms:
         manufacturers:
-        - SeaPath
+        - 'Kongsberg Seatex'
+        - 'Kongsberg Maritime AS'
+        message_samples:
+        - '$GPGGA,185300.21,4738.972991,N,12218.790294,W,2,12,0.9,-0.31,M,-18.41,M,1.2,0001*55'
+        - '$GPHDT,310.22,T*07'
+        - '$GPVTG,161.50,T,146.18,M,0.0,N,0.0,K,D*2F'
+        - '$GPZDA,185300.21,07,02,2023,,*6C'
+        message_regex_patterns:
+        - '^\WGPGGA,(?P<utc_position_fix>\d+\.\d+),(?P<latitude>\d+\.\d+),(?P<latitude_dir>[NS]),(?P<longitude>\d+\.\d+),(?P<longitude_dir>[EW]),(?P<gps_quality_indicator>\d+),(?P<num_sat_vis>\d+),(?P<hdop>\d+\.\d+),(?P<ortho_height>\-?\d+\.\d+),M,(?P<geoid_separation>\-?\d+\.\d+),M,(?P<age>[\d\.]*),\d{4}\*(?P<checksum>[0-9A-F]{2})$'
+        - '^\WGPHDT,(?P<heading>\d+\.\d+),T\*(?P<checksum>[0-9A-F]{2})$'
+        - '^\WGPVTG,(?P<cog_true>\d+\.\d+)?,T,(?P<cog_magnetic>\d+\.\d+)?,M,(?P<sog_knots>\d+\.\d+)?,N,(?P<sog_kmhr>\d+\.\d+)?,K,?\w*\*(?P<checksum>[0-9A-F]{2})$'
+        - '^\WGPZDA,(?P<utc_time>\d+\.\d+),(?P<day>\d{2}),(?P<month>\d{2}),(?P<year>\d{4}),(?P<tzoffset_hours>\d{0,2}),(?P<tzoffset_mins>\d{0,2})\*(?P<checksum>[0-9A-F]{2})$'
+
+    'Seapath 380+':
+        NERC_L22_label: 'Kongsberg Seatex Seapath 380 heading, attitude and positioning sensor series'
+        pseudonyms:
+        manufacturers:
+        - 'Kongsberg Seatex'
+        - 'Kongsberg Maritime AS'
         message_samples:
         - '$GPGGA,172814.0,3723.46587704,N,12202.26957864,W,2,6,1.2,18.893,M,-25.669,M,2.0,0031*4F'
+        - '$GPGGA,194712.70,6005.084740,N,14921.152269,W,2,09,1.2,16.27,M,10.10,M,1.2,0001*6E'
         - '$GPHDT,123.456,T*00'
+        - '$GPHDT,90.78,T*33'
         - '$GPVTG,123.4,T,140.1,M,0.00,N,0.00,K*4E'
+        - '$GPVTG,236.17,T,221.28,M,0.0,N,0.0,K,D*2C'
         - '$GPZDA,172809.456,12,07,1996,00,00*45'
+        - '$GPZDA,194712.70,26,01,2024,,*68'
         message_regex_patterns:
         - '^\WGPGGA,(?P<utc_position_fix>\d+\.\d+),(?P<latitude>\d+\.\d+),(?P<latitude_dir>[NS]),(?P<longitude>\d+\.\d+),(?P<longitude_dir>[EW]),(?P<gps_quality_indicator>\d+),(?P<num_sat_vis>\d+),(?P<hdop>\d+\.\d+),(?P<ortho_height>\-?\d+\.\d+),M,(?P<geoid_separation>\-?\d+\.\d+),M,(?P<age>[\d\.]*),\d{4}\*(?P<checksum>[0-9A-F]{2})$'
         - '^\WGPHDT,(?P<heading>\d+\.\d+),T\*(?P<checksum>[0-9A-F]{2})$'
@@ -78,13 +334,256 @@ sensors:
 
 
     # ---------------------------------------------------------
-    # Trimble
+    # Krohne Messtechnik GmbH
 
-    'ABX-Two GNSS':
+    'Optiflux 5000':
+        NERC_L22_label: 'Krohne Optiflux 5000 flow sensor'
+        pseudonyms:
+        manufacturers:
+        - 'Krohne Messtechnik GmbH'
+        message_samples:
+        - '0.378,4.00,17.46,0.02493'
+        message_regex_patterns:
+        - '^(?P<flow_speed>\-?\d+\.\d+),(?P<volume_flow>\-?\d+\.\d+),(?P<coil_temperature>\-?\d+\.\d+),(?P<conductivity>\-?\d+\.\d+)$'
+
+
+    # ---------------------------------------------------------
+    # Metek
+
+    'uSonic-3':
+        NERC_L22_label: 'Metek uSonic-3 Scientific {formerly: USA-1} ultrasonic anemometer'
+        pseudonyms:
+        manufacturers:
+        - 'Metek'
+        - 'METEK Meteorologische Messtechnik GmbH'
+        message_samples:
+        - 'M:x = -511 y = -436 z = 93 t = 1302 dq= 100'
+        message_regex_patterns:
+        - '^(?P<mode>\w):x\s+=\s+(?P<x_wind>\-?\d+)\s+y\s+=\s+(?P<y_wind>\-?\d+)\s+z\s+=\s+(?P<z_wind>\-?\d+)\s+t\s+=\s+(?P<acoustic_temp>\-?\d+)\s+dq=\s+(?P<data_quality>\d+)$'
+
+
+    # ---------------------------------------------------------
+    # Oceaneering International Inc.
+
+    'C-NavX1':
+        NERC_L22_label: 'C-NavX1 Global Navigation Satellite System (GNSS) receiver'
+        pseudonyms:
+        manufacturers:
+        - 'Oceaneering International Inc.'
+        message_samples:
+        - '$GPGGA,214049.00,6007.173503,N,14925.535374,W,2,14,1.30,44.708,M,0.000,M,21,0000*46'
+        - '$GPRMC,214049.00,A,6007.173503,N,14925.535374,W,0.071,39.5,1302124,,D,V*11'
+        - '$GPVTG,39.5,T,39.5,M,0.071,N,0.132,K,D*20'
+        - '$GPZDA,214049.00,13,02,2024,00,00*68'
+        message_regex_patterns:
+        - '^\WGPGGA,(?P<utc_position_fix>\d+\.\d+),(?P<latitude>\d+\.\d+),(?P<latitude_dir>[NS]),(?P<longitude>\d+\.\d+),(?P<longitude_dir>[EW]),(?P<gps_quality_indicator>\d+),(?P<num_sat_vis>\d+),(?P<hdop>\d+\.\d+),(?P<ortho_height>\-?\d+\.\d+),M,(?P<geoid_separation>\-?\d+\.\d+),M,(?P<age>[\d\.]*),\d{4}\*(?P<checksum>[0-9A-F]{2})$'
+        - '^\WGPRMC,(?P<utc_position_fix_rmc>\d+\.\d+),(?P<status_rmc>[AV]),(?P<latitude_rmc>\d+\.\d+),(?P<latitude_dir_rmc>[NS]),(?P<longitude_rmc>\d+\.\d+),(?P<longitude_dir_rmc>[EW]),(?P<sog_knots_rmc>\d+\.\d+)?,(?P<cog_true_rmc>\d+\.\d+)?,(?P<day_rmc>\d{2})(?P<month_rmc>\d{2})\d(?P<year_rmc>\d{2}),,(?P<mode_rmc>[ADE]),\w*\*(?P<checksum>[0-9A-F]{2})$'
+        - '^\WGPVTG,(?P<cog_true>\d+\.\d+)?,T,(?P<cog_magnetic>\d+\.\d+)?,M,(?P<sog_knots>\d+\.\d+)?,N,(?P<sog_kmhr>\d+\.\d+)?,K,?\w*\*(?P<checksum>[0-9A-F]{2})$'
+        - '^\WGPZDA,(?P<utc_time>\d+\.\d+),(?P<day>\d{2}),(?P<month>\d{2}),(?P<year>\d{4}),(?P<tzoffset_hours>\d{0,2}),(?P<tzoffset_mins>\d{0,2})\*(?P<checksum>[0-9A-F]{2})$'
+
+
+    # ---------------------------------------------------------
+    # Optical Scientific
+
+    'APG-815-DS':
         NERC_L22_label:
         pseudonyms:
         manufacturers:
-        - Trimble
+        - 'Optical Scientific'
+        message_samples:
+        - '61 .489 007.423 01*0 4999 0142 0040 007'
+        - 'R- .178 000.208 01*0 4999 0087 0076 +06'
+        message_regex_patterns:
+        - '^(?P<wmo_code>\d{2})\s(?P<precipitation_rate>[\.\d]{4})\s(?P<precipitation_accumulation>\d{3}\.\d{3})\s01..\s(?P<carrier_strength>\d{4})\s(?P<raw>\-?\d{3,4})\s(?P<baseline>\-?\d{3,4})\s(?P<temperature>\-?\d{2,3})$'
+        - '^(?P<weather_code>[ERSP]{1,2}[-+]?)?\s+(?P<precip_rate>\d*\.\d+)\s+(?P<accumulation>\d+\.\d+)\s+\d+\*\d+\s+(?P<signal_strength>\d+)\s+(?P<one_min_avg>\d+)\s+(?P<baseline_data>\d+)\s+(?P<air_temp>[-+]\d+)$'
+
+    'ORG-815-DS':
+        NERC_L22_label: 'OSi ORG-815 series optical rain gauges'
+        pseudonyms:
+        manufacturers:
+        - 'Optical Scientific'
+        message_samples:
+        - '61 .489 007.423 01*0 4999 0142 0040 007'
+        - 'R- .178 000.208 01*0 4999 0087 0076 +06'
+        message_regex_patterns:
+        - '^(?P<wmo_code>\d{2})\s(?P<precipitation_rate>[\.\d]{4})\s(?P<precipitation_accumulation>\d{3}\.\d{3})\s01..\s(?P<carrier_strength>\d{4})\s(?P<raw>\-?\d{3,4})\s(?P<baseline>\-?\d{3,4})\s(?P<temperature>\-?\d{2,3})$'
+        - '^(?P<weather_code>[ERSP]{1,2}[-+]?)?\s+(?P<precip_rate>\d*\.\d+)\s+(?P<accumulation>\d+\.\d+)\s+\d+\*\d+\s+(?P<signal_strength>\d+)\s+(?P<one_min_avg>\d+)\s+(?P<baseline_data>\d+)\s+(?P<air_temp>[-+]\d+)$'
+
+
+    # ---------------------------------------------------------
+    # Paroscientific Inc
+
+    'MET4A':
+        NERC_L22_label:
+        pseudonyms:
+        manufacturers:
+        - 'Paroscientific Inc'
+        message_samples:
+        - '$WIXDR,PRESS,1.017845,bar,Ss/n146581,TEMP,-13.43,C,RH,86.15,%RH,s/n20268722,FAN,1'
+        - '$WIXDR,PRESS,.998924,bar,Ss/n146582,TEMP,1.12,C,RH,88.02,%RH,s/n20268816,FAN,1'
+        message_regex_patterns:
+        - '^\WWIXDR,PRESS,(?P<barometric_pressure>\d*\.\d+),bar,\D+\Wn\d+,TEMP,(?P<air_temperature>\-?\d*\.\d+),C,RH,(?P<relative_humidity>\d+\.\d+),\WRH,s\Wn\d+,FAN,(?P<fan_status>\d)$'
+
+
+    # ---------------------------------------------------------
+    # Picarro Inc.
+
+    'G2401':
+        NERC_L22_label: 'Picarro G2401 gas analyser'
+        pseudonyms:
+        manufacturers:
+        - 'Picarro Inc.'
+        message_samples:
+        - '1649113073.21 139.9989 45.0000 35.4375 44.8943 45.0001 4.0000 0.0000 33457.9609 0.0000 0.1472 437.8036 442.6329 1.9891 2.0071 0.7038 0.8916 0.9396 620.7708 0.3388 20220404.0000 225753.2090'
+        message_regex_patterns:
+        - '^\s*(\d+\.\d+)\s+(?P<cavity_pressure>\d+\.\d+)\s+(?P<cavity_temperature>\-?\d+\.\d+)\s+(?P<DAS_temperature>\-?\d+\.\d+)\s+(?P<Eta_temperature>\-?\d+\.\d+)\s+(?P<warm_box_temperature>\-?\d+\.\d+)\s+(\-?\d+\.\d+)\s+(?P<MPV_position>\-?\d+\.\d+)\s+(?P<Outlet_Vlv>\d+\.\d+)\s+(\-?\d+\.\d+)\s+(?P<CO>\-?\d+\.\d+)\s+(?P<CO2>\-?\d+\.\d+)\s+(?P<CO2_dry>\-?\d+\.\d+)\s+(?P<CH4>\-?\d+\.\d+)\s+(?P<CH4_dry>\-?\d+\.\d+)\s+(?P<H2O>\-?\d+\.\d+)\s+(?P<H2O_Rep>\-?\d+\.\d+)\s+(?P<H2O_Per>\-?\d+\.\d+)\s+(?P<Peak_14>\-?\d+\.\d+)\s+(?P<Peak_84>\-?\d+\.\d+)\s+(?P<instrument_date>\d+\.\d+)\s+(?P<instrument_time>\d+\.\d+)\s*$'
+
+
+    # ---------------------------------------------------------
+    # Pro-Oceanus Systems Inc
+
+    'Mini TDGP':
+        NERC_L22_label: 'Pro-Oceanus Mini TDGP (submersible) dissolved gas sensor'
+        pseudonyms:
+        manufacturers:
+        - 'Pro-Oceanus Systems Inc'
+        message_samples:
+        - 'P 2022,11,11,21,34,28,10.83,1036.36,11.7'
+        message_regex_patterns:
+        - '^\w\s\d+,\d+,\d+,\d+,\d+,\d+,(?P<instrument_temperature>\-?\d+\.\d+),(?P<dissolved_gas_pressure>\d+\.\d+),(?P<supply_voltage>\d+\.\d+)$'
+
+
+    # ---------------------------------------------------------
+    # Rapp Marine
+
+    'winch':
+        NERC_L22_label:
+        pseudonyms:
+        manufacturers:
+        - 'Rapp Marine'
+        message_samples:
+        - '@RCWD,2,1,7.56,0.23,-3.98,0,7.61,0.341314*05'
+        - '@RCWD,1,0,-39.45,0.00,0.00,0,-43.83,0.000000*2a'
+        - '@RCWD,6,0,-110.73,0.000,0.00,0,0,0.000000*1d'
+        - '@RCWD,2,0,-12.45,0.00,0.00,0,-15.58,0.000000*25'
+        - '@RCWD,7,0,-30.49,0.00,0.00,0,0,0.038143*1b'
+        message_regex_patterns:
+        - '^\WRCWD,(?P<winch_number>\d),(?P<winch_mode>\d),(?P<length_motor>\-?\d+\.\d+),(?P<tension_motor>\-?\d+\.\d+),(?P<velocity>\-?\d+\.\d+),(?P<alarm>\-?\d),(?P<length_block>[\-\d\.]+),(?P<tension_load_cell>\-?\d+\.\d+)\*(?P<checksum>[0-9a-f]{2})$'
+
+
+    # ---------------------------------------------------------
+    # R.M. Young
+
+    '85004':
+        NERC_L22_label: 'RM Young 85000 ultrasonic anemometer'
+        pseudonyms:
+        manufacturers:
+        - 'R.M. Young'
+        message_samples:
+        - '$WIMWV,325,R,28.4,N,A*07'
+        message_regex_patterns:
+        - '^\WWIMWV,(?P<direction>\d+)?,R,(?P<speed>\d+\.\d+)?,N,(?P<status>[AV])\*(?P<checksum>[0-9A-F]{2})$'
+
+
+    # ---------------------------------------------------------
+    # Satlantic (Sea-Bird Scientific)
+
+    'SeaFET V2':
+        NERC_L22_label: 'Satlantic SeaFET V2 {Sea-Bird Scientific} (shallow) pH sensor'
+        pseudonyms:
+        manufacturers:
+        - 'Satlantic'
+        - 'Sea-Bird Scientific'
+        message_samples:
+        - 'SEAFET02101, 2020-08-25T17:12:20, 11, 0000, 6.4765, 6.9612, -0.930214, -0.951255, 21.6808, 22.2, 21.6'
+        message_regex_patterns:
+        - '^SEAFET(?P<framesync>\w+),\s*(?P<instrument_datetime>[\dT\-:]{19}),\s+(?P<sample_number>\d+),\s+(?P<data_error_flags>\w+),\s*(?P<ph_internal>\d+\.\d+),\s*(?P<ph_external>\d+\.\d+),\s*(?P<Vrs_ext>\-?\d+\.\d+),\s*(?P<Vrs_int>\-?\d+\.\d+),\s*(?P<ph_temperature>\-?\d+\.\d+),\s*(?P<internal_RH>\d+\.\d+),\s*(?P<internal_temperature>\-?\d+\.\d+)$'
+
+    'SUNA V2':
+        NERC_L22_label: 'Satlantic Submersible Ultraviolet Nitrate Analyser V2 {SUNA V2} nutrient analyser series'
+        pseudonyms:
+        manufacturers:
+        - 'Satlantic'
+        - 'Sea-Bird Scientific'
+        message_samples:
+        - 'SATSLF1999,2023041,0.466821,-0.28,-0.0039,0.0063,0.0045,0.00,23202,1003,1,1009,1012,1001,1004,1010,1012,1013,1017,1003,1012,1000,1008,1023,1125,1586,3052,6493,12156,18981,25256,29765,32233,33076,32885,32209,31413,30736,30361,30305,30565,31217,32247,33657,35424,37512,39822,42299,44804,47050,48887,50054,50428,50007,48787,46921,44714,42394,40153,38142,36433,35069,34103,33457,33126,33130,33397,33911,34676,35606,36765,38084,39485,41029,42619,44203,45643,46917,47827,48321,48333,47845,46853,45354,43484,41415,39177,36928,34768,32717,30857,29185,27699,26396,25296,24333,23548,22932,22432,22097,21906,21805,21861,22055,22337,22760,23287,23915,24586,25333,26087,26824,27522,28108,28578,28852,28953,28877,28598,28136,27547,26814,26017,25182,24345,23553,22818,22094,21460,20912,20439,20055,19762,19532,19399,19339,19362,19479,19640,19865,20165,20506,20905,21353,21847,22382,22971,23491,23908,24576,25592,26256,26978,27648,28308,28916,29497,29995,30428,30777,31017,31171,31223,31164,31029,30771,30424,30011,29522,29009,28448,27882,27293,26713,26116,25516,24906,24281,23672,23057,22469,21889,21338,20817,20333,19914,19498,19155,18821,18525,18274,18043,17838,17652,17488,17338,17169,17031,16907,16772,16658,16544,16428,16330,16274,16224,16168,16120,16058,16030,16005,15968,15985,15982,15992,15993,15996,16006,15997,15993,15974,15934,15894,15809,15744,15660,15527,15402,15271,15095,14964,14761,14523,14234,13955,13633,13324,13041,12767,12519,12271,12043,11841,11633,11454,11278,11104,10875,10616,10394,10164,9959,9771,9595,9446,9290,9165,9048,8955,8841,8775,8709,8691,8630,8545,8320,7861,24.9,26.6,27.5,153259,0.0,11.9,12.0,5.0,593,2.08,-3.34,0.0950,0.230815,0.000086,,,,,208'
+        message_regex_patterns:
+        - '^SATSLF\d+,\d{7},\d+\.\d+,(?P<nitrate_concentration>\-?\d+\.\d+),\-?\d+\.\d+,(?P<a254>\-?\d+\.\d+),(?P<a350>\-?\d+\.\d+),(?P<bromide>\-?\d+\.\d+),\d+,(?P<dark_value>\d+),\d,(?P<ASM>(\d+,){255}\d+),(?P<internal_temp>\-?\d+\.\d+),(?P<spec_temp>\-?\d+\.\d+),(?P<lamp_temp>\-?\d+\.\d+),(?P<lamp_ontime>\d+),(?P<internal_humidity>\d+\.\d+),(?P<main_voltage>\d+\.\d+),(?P<lamp_voltage>\d+\.\d+),(?P<internal_voltage>\d+\.\d+),(?P<main_current>\d+),(\-?\d+\.\d+,){5}(\-?\d?\.?\d?,){4}(?P<checksum>\d+)$'
+
+
+    # ---------------------------------------------------------
+    # Sea-Bird Scientific
+
+    'SBE 38':
+        NERC_L22_label: 'Sea-Bird SBE 38 thermometer'
+        pseudonyms:
+        manufacturers:
+        - 'Sea-Bird Scientific'
+        - 'Sea-Bird Electronics'
+        message_samples:
+        - '0.4168'
+        message_regex_patterns:
+        - '^\s*(?P<temperature>\-?\d+\.\d+)$'
+
+    'SBE 45':
+        NERC_L22_label: 'Sea-Bird SBE 45 MicroTSG thermosalinograph'
+        pseudonyms:
+        - 'MicroTSG'
+        manufacturers:
+        - 'Sea-Bird Scientific'
+        message_samples:
+        - '23.2704, 0.00007, 0.0112'
+        - '5.21291 25.4358 33.9740 25.2984 0.20269 1534.02 0.103785 0.8241 0.0887 0.2564 391.2051282'
+        - '-1.2474, 2.26735, 27.7941, 1433.585'
+        message_regex_patterns:
+        - '^(?P<temperature>\-?\d+\.\d+),\s+(?P<conductivity>\-?\d+\.\d+),\s+(?P<salinity>\d+\.\d+)$'
+        - '^(?P<conductivity>\d+\.\d+)\s+(?P<temperature>\-?\d+\.\d+)\s+(?P<salinity>\d+\.\d+)\s+(?P<sst>\-?\d+\.\d+)\s+(?P<fluorescence>\d+\.\d+)\s+(?P<sound_velocity>\d+\.\d+)\s+(\-?\d+\.\d+)\s+(\-?\d+\.\d+)\s+(\-?\d+\.\d+)\s+(\-?\d+\.\d+)\s+(\-?\d+\.\d+)$'
+        - '^(?P<temperature>\-?\d+\.\d+),\s+(?P<conductivity>\-?\d+\.\d+),\s+(?P<salinity>\d+\.\d+),\s+(?P<sound_velocity>\d+\.\d+)$'
+
+
+    # ---------------------------------------------------------
+    # Sperry Marine
+
+    'Naviknot':
+        NERC_L22_label:
+        pseudonyms:
+        manufacturers:
+        - 'Sperry Marine'
+        message_samples:
+        - '$VDVLW,14566.6,N,4566.64,N*5A'
+        - '$VDVBW,5.5,0.2,A,,,V,,V,,V*44'
+        message_regex_patterns:
+        - '^\WVDVLW,(?P<cumulative_water_distance_knots>\d+\.\d+),N,(?P<cumulative_ground_distance_knots>\d+\.\d+),N\*(?P<checksum>[0-9A-F]{2})$'
+        - '^\WVDVBW,(?P<longitudinal_water_speed_knots>\-?\d+\.\d+)?,(?P<transverse_water_speed_knots>\-?\d+\.\d+)?,(?P<water_speed_status>[AV]),(?P<longitudinal_ground_speed_knots>\-?\d+\.\d+)?,(?P<transverse_ground_speed_knots>\-?\d+\.\d+)?,(?P<ground_speed_status>[AV]),(?P<stern_transverse_water_speed_knots>\-?\d+\.\d+)?,(?P<stern_water_speed_status>[AV]),(?P<stern_transverse_ground_speed_knots>\-?\d+\.\d+)?,(?P<stern_ground_speed_status>[AV])\*(?P<checksum>[0-9A-F]{2})$'
+
+
+    # ---------------------------------------------------------
+    # Teledyne RD Instruments
+
+    'WH300':
+        NERC_L22_label: 'Teledyne RDI 300kHz Narrowband Vessel-Mounted ADCP'
+        pseudonyms:
+        manufacturers:
+        - 'Teledyne RD Instruments'
+        - 'Teledyne RDI'
+        message_samples:
+        - '$VDVBW,0.15,0.01,A,-0.76,0.57,A*7A'
+        - '$VDVBW,0.06,-0.09,A,,,*32'
+        - '$PMSG,8846*27'
+        message_regex_patterns:
+        - '^\WVDVBW,(?P<long_water_speed>\-?\d+\.\d+),(?P<trans_water_speed>\-?\d+\.\d+),(?P<status_water_speed>\w),(?P<long_ground_speed>(\-?\d*\.\d*)?),(?P<trans_ground_speed>(\-?\d*\.\d*)?),(?P<status_ground_speed>\w*)\*(?P<checksum>[0-9A-F]{2})$'
+        - '^\WPMSG,(?P<depth>\d+)\*(?P<checksum>[0-9A-F]{2})$'
+
+
+    # ---------------------------------------------------------
+    # Trimble
+
+    'ABX-Two':
+        NERC_L22_label: 'Trimble ABX-Two gyrocompass'
+        pseudonyms:
+        - 'ABX2'
+        manufacturers:
+        - 'Trimble'
         message_samples:
         - '30.36053581666666,-89.098027065,249.44,0.0,0.0,0.0057,0.51808,-0.06371'
         message_regex_patterns:
@@ -95,11 +594,11 @@ sensors:
     # Vaisala
 
     'FD71P':
-        NERC_L22_label: Vaisala FD70 Series
+        NERC_L22_label: 'Vaisala FD70 Forward Scatter Sensor series'
         pseudonyms:
-        - Present Weather
+        - 'Present Weather'
         manufacturers:
-        - Vaisala
+        - 'Vaisala'
         message_samples:
         - 'REHZ'
         - 'DZ'
@@ -114,3 +613,89 @@ sensors:
         - '^\d\-(?P<status1>\w{11})\-(?P<status2>\w{25})\-(?P<status3>\w{8})\-(?P<status4>\w{7}\+\w{3})\-(?P<status5>\w{7}\+\w{3})\-(?P<status6>\w{7}\+\w{3})\-(?P<status7>\w{4}\+\w{5})\-(?P<status8>\w{7}\+\w{3})\-(?P<status9>\w{7}\+\w{3})\-0000\+00000$'
         - '^\s*(?P<kinetic_energy>\-?\d+\.\d\d\d)\s+(?P<fall_speed>(\d+\s+){25}\d+)$'
         - '^\s*(?P<reflectivity>\-?\d+\.\d)\s+(?P<size>(\d+\s+){40}\d+)$'
+
+    'PTU300':
+        NERC_L22_label: 'Vaisala PTU300 Pressure, Humidity and Temperature Transmitter series'
+        pseudonyms:
+        manufacturers:
+        - 'Vaisala'
+        message_samples:
+        - 'h 47 P= 1015.7 hPa T= 20.7 ‘C RH= 39.8 %RH'
+        message_regex_patterns:
+        - '^(?P<status_id>\w)\s+(?P<status_value>[\d\.]+)\s+P=\s+(?P<barometric_pressure>\d+\.\d+) hPa\s+T=\s+(?P<air_temperature>\-?\d+\.\d+) \WC RH=\s+(?P<relative_humidity>\d+\.\d+) %RH$'
+
+    'WXT536':
+        NERC_L22_label: 'Vaisala WXT530 weather transmitter series'
+        pseudonyms:
+        manufacturers:
+        - 'Vaisala'
+        message_samples:
+        - '0R1,Dn=036D,Dm=049D,Dx=053D,Sn=0.2M,Sm=0.2M,Sx=0.3M'
+        - '0R2,Ta=20.9C,Tp=20.8C,Ua=21.5P,Pa=1013.8H'
+        - '0R3,Rc=0.00M,Rd=10s,Ri=0.0M,Hc=0.0M,Hd=0s,Hi=0.0M,Rp=0.0M,Hp=0.0M'
+        - '0R5,Th=22.0C,Vh=24.2N,Vs=24.5V,Vr=3.646V,Id=R2350085'
+        message_regex_patterns:
+        - '^0R1,Dn=(?P<wind_direction_min>\d+)D,Dm=(?P<wind_direction_avg>\d+)D,Dx=(?P<wind_direction_max>\d+)D,Sn=(?P<wind_speed_min>\d+\.\d+)M,Sm=(?P<wind_speed_avg>\d+\.\d+)M,Sx=(?P<wind_speed_max>\d+\.\d+)M$'
+        - '^0R2,Ta=(?P<air_temperature>\-?\d+\.\d+)C,Tp=(?P<internal_temperature>\-?\d+\.\d+)C,Ua=(?P<relative_humidity>\d+\.\d+)P,Pa=(?P<barometric_pressure>\d+\.\d+)H$'
+        - '^0R3,Rc=(?P<rain_accumulation>\d+\.\d+)M,Rd=(?P<rain_duration>\d+)s,Ri=(?P<rain_intensity>\d+\.\d+)M,Hc=(?P<hail_accumulation>\d+\.\d+)M,Hd=(?P<hail_duration>\d+)s,Hi=(?P<hail_intensity>\d+\.\d+)M,Rp=(?P<rain_peak_intensity>\d+\.\d+)M,Hp=(?P<hail_peak_intensity>\d+\.\d+)M$'
+        - '^0R5,Th=(?P<heating_temperature>\-?\d+\.\d+)C,Vh=(?P<heating_voltage>\d+\.\d+)N,Vs=(?P<supply_voltage>\d+\.\d+)V,Vr=(?P<reference_voltage>\d+\.\d+)V,Id=(?P<unique_id>\w+)$'
+
+
+    # ---------------------------------------------------------
+    # WET Labs (Sea-Bird WETLabs)
+
+    'C-Star':
+        NERC_L22_label: 'WET Labs {Sea-Bird WETLabs} C-Star transmissometer'
+        pseudonyms:
+        manufacturers:
+        - 'Sea-Bird Scientific'
+        - 'Sea-Bird WETLabs'
+        - 'WET Labs'
+        message_samples:
+        - 'CST-1977DR 11531 15780 15783 -0.087 544'
+        message_regex_patterns:
+        - '^CST-(\d+)DR\s+(?P<reference>\d+)\s+(?P<signal>\d+)\s+(?P<corrected>\d+)\s+(?P<transmittance>\-?\d+\.\d+)\s+(?P<thermistor>\d+)$'
+
+    'ECO Triplet':
+        NERC_L22_label: 'WET Labs {Sea-Bird WETLabs} ECO Triplet sensor'
+        pseudonyms:
+        manufacturers:
+        - 'Sea-Bird Scientific'
+        - 'Sea-Bird WETLabs'
+        - 'WET Labs'
+        message_samples:
+        - '99/99/99 99:99:99 650 49 880 264 460 55 525'
+        - '11/10/22 07:37:21 650 319 695 54 460 64 557'
+        message_regex_patterns:
+        - '^(?P<instrument_datetime>\d\d/\d\d/\d\d\s+\d\d:\d\d:\d\d)\s+(?P<wavelength_1>\d+)\s+(?P<counts_1>\d+)\s+(?P<wavelength_2>\d+)\s+(?P<counts_2>\d+)\s+(?P<wavelength_3>\d+)\s+(?P<counts_3>\d+)\s+(?P<CPU_thermistor>\d+)$'
+
+
+    # ---------------------------------------------------------
+    # GPS NMEA strings (various manufacturers)
+    # Not all NMEA strings are formatted the same.
+    # This incomplete list shows some of the variety.
+
+    'GPS NMEA':
+        NERC_L22_label:
+        pseudonyms:
+        manufacturers:
+        message_samples:
+        - '$GPGGA,175241,4135.1885,N,07124.6032,W,2,12,1.3,17.7,M,,M,,*79'
+        - '$GPGGA,032529,4129.551,N,07125.116,W,1,08,1.20,12,M,,,,*12'
+        - '$GPGGA,185300.21,4738.972991,N,12218.790294,W,2,12,0.9,-0.31,M,-18.41,M,1.2,0001*55'
+        - '$GPHDT,310.22,T*07'
+        - '$GPRMC,214049.00,A,6007.173503,N,14925.535374,W,0.071,39.5,1302124,,D,V*11'
+        - '$GPVTG,315.5,T,329.8,M,0.0,N,0.1,K*4D'
+        - '$GPVTG,161.50,T,146.18,M,0.0,N,0.0,K,D*2F'
+        - '$GPVTG,180,T,197,M,00.1,N,00.1,K*48'
+        - '$GPZDA,185300.21,07,02,2023,,*6C'
+        message_regex_patterns:
+        - '^\WGPGGA,(?P<utc_position_fix>\d+),(?P<latitude>\d+\.\d+),(?P<latitude_dir>[NS]),(?P<longitude>\d+\.\d+),(?P<longitude_dir>[EW]),(?P<gps_quality_indicator>\d+),(?P<num_sat_vis>\d+),(?P<hdop>\d+\.\d+),(?P<ortho_height>\-?\d+\.\d+),M,(?P<geoid_separation>\-?\d+\.\d+)?,M,(?P<age>[\d\.]*)?,\*(?P<checksum>[0-9A-F]{2})$'
+        - '^\WGPGGA,(?P<utc_position_fix>\d+),(?P<latitude>\d+\.\d+),(?P<latitude_dir>[NS]),(?P<longitude>\d+\.\d+),(?P<longitude_dir>[EW]),(?P<gps_quality_indicator>\d+),(?P<num_sat_vis>\d+),(?P<hdop>\d+\.\d+),(?P<ortho_height>\-?\d+),M,(?P<geoid_separation>\-?\d+\.\d+)?,\w*,(?P<age>\d*)?,\*(?P<checksum>[0-9A-F]{2})$'
+        - '^\WGPGGA,(?P<utc_position_fix>\d+\.\d+),(?P<latitude>\d+\.\d+),(?P<latitude_dir>[NS]),(?P<longitude>\d+\.\d+),(?P<longitude_dir>[EW]),(?P<gps_quality_indicator>\d+),(?P<num_sat_vis>\d+),(?P<hdop>\d+\.\d+),(?P<ortho_height>\-?\d+\.\d+),M,(?P<geoid_separation>\-?\d+\.\d+),M,(?P<age>[\d\.]*),\d{4}\*(?P<checksum>[0-9A-F]{2})$'
+        - '^\WGPHDT,(?P<heading>\d+\.\d+),T\*(?P<checksum>[0-9A-F]{2})$'
+        - '^\WGPRMC,(?P<utc_position_fix_rmc>\d+\.\d+),(?P<status_rmc>[AV]),(?P<latitude_rmc>\d+\.\d+),(?P<latitude_dir_rmc>[NS]),(?P<longitude_rmc>\d+\.\d+),(?P<longitude_dir_rmc>[EW]),(?P<sog_knots_rmc>\d+\.\d+)?,(?P<cog_true_rmc>\d+\.\d+)?,(?P<day_rmc>\d{2})(?P<month_rmc>\d{2})\d(?P<year_rmc>\d{2}),,(?P<mode_rmc>[ADE]),\w*\*(?P<checksum>[0-9A-F]{2})$'
+        - '^\WGPVTG,(?P<cog_true>\d+\.\d+)?,T,(?P<cog_magnetic>\d+\.\d+)?,M,(?P<sog_knots>\d+\.\d+)?,N,(?P<sog_kmhr>\d+\.\d+)?,K\*(?P<checksum>[0-9A-F]{2})$'
+        - '^\WGPVTG,(?P<cog_true>\d+\.\d+)?,T,(?P<cog_magnetic>\d+\.\d+)?,M,(?P<sog_knots>\d+\.\d+)?,N,(?P<sog_kmhr>\d+\.\d+)?,K,?\w*\*(?P<checksum>[0-9A-F]{2})$'
+        - '^\WGPVTG,(?P<cog_true>\d+)?,T,(?P<cog_magnetic>\d+)?,M,(?P<sog_knots>\d+\.\d+)?,N,(?P<sog_kmhr>\d+\.\d+)?,K\*(?P<checksum_2>[0-9A-F]{2})$'
+        - '^\WGPZDA,(?P<utc_time>\d+\.\d+),(?P<day>\d{2}),(?P<month>\d{2}),(?P<year>\d{4}),(?P<tzoffset_hours>\d{0,2}),(?P<tzoffset_mins>\d{0,2})\*(?P<checksum>[0-9A-F]{2})$'
