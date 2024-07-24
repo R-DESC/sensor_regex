@@ -1,5 +1,5 @@
 
-### sensor_regex
+# sensor_regex
 
 Regex (Regular Expression) patterns for parsing oceanographic, navigation, and meteorological sensor ASCII data messages.
 
@@ -9,44 +9,39 @@ Note that for sensors that output multiple message types (like GNSS sensors), it
 
 A summary of commonly-used regex metacharacters and sequences are provided at the bottom of this document for quick reference.
 
+
 -----------------------------------------
 
 ## files and scripts
 
----- ---- ---- ---- ----
+-----------------------------------------
 
-# sensor_regex_patterns.yaml
+### sensor_regex_patterns.yaml
 
 This yaml file contains regex patterns and sample data messages for a variety of oceanographic and meteorological sensors.
 The contents are ordered alphabetically by manufacturer, then alphabetically by sensor model.
 
 Example yaml section:
 
-'SBE 38':
-        NERC_L22_label: 'Sea-Bird SBE 38 thermometer'
-        pseudonyms:
-        manufacturers:
-        - 'Sea-Bird Scientific'
-        - 'Sea-Bird Electronics'
-        message_samples:
-        - '0.4168'
-        message_regex_patterns:
-        - '^\s*(?P<temperature>\-?\d+\.\d+)$'
+'SBE 38':<br/>
+&emsp; NERC_L22_label: 'Sea-Bird SBE 38 thermometer'<br/>
+&emsp; pseudonyms:<br/>
+&emsp; manufacturers:<br/>
+&emsp; - 'Sea-Bird Scientific'<br/>
+&emsp; - 'Sea-Bird Electronics'<br/>
+&emsp; message_samples:<br/>
+&emsp; - '0.4168'<br/>
+&emsp; message_regex_patterns:<br/>
+&emsp; - '^\s*(?P\<temperature\>\\-?\d+\\.\d+)$'<br/>
 
-Key:                         The sensor key (e.g. 'SBE 38') is the manufacturer's model name for the sensor.
-                             The key may contain spaces. 
-                             This key should be unique within the yaml file.
-NERC_L22_label:              The standard identifier for the sensor model (or sensor class) as listed in the NERC Vocabulary Server L22 Seavox Device Catalogue
-                             (https://vocab.nerc.ac.uk/collection/L22/current/). 
-                             Please use the "preferred label" from L22 for this field.
-pseudonyms:                  A list of other names that may be commonly used to reference this sensor model (if applicable).
-manufacturers:               A list of manufacturer names attributed to this sensor model.
-message samples:             A list of one or more example data messages output by the sensor. 
-                             The data message format may differ depending on the sensor configuration. 
-                             The sensor may output several different data message types.
-                             For accuracy, the data message should be copied and pasted from the sensor output.
-                             The syntax must match the sensor output exactly (for example, spaces must be represented accurately).
-message_regex_patterns:      A list of one or more regex patterns for parsing the sensor data messages.
+Item                          | Description
+--- | ---
+Key:            | The sensor key (e.g. 'SBE 38') is the manufacturer's model name for the sensor. The key may contain spaces. This key should be unique within the yaml file.
+NERC_L22_label: | The standard identifier for the sensor model (or sensor class) as listed in the NERC Vocabulary Server L22 Seavox Device Catalogue (https://vocab.nerc.ac.uk/collection/L22/current/). Please use the "preferred label" from L22 for this field.
+pseudonyms:     | A list of other names that may be commonly used to reference this sensor model (if applicable).
+manufacturers:  | A list of manufacturer names attributed to this sensor model.
+message samples:| A list of one or more example data messages output by the sensor. The data message format may differ depending on the sensor configuration. The sensor may output several different data message types. For accuracy, the data message should be copied and pasted from the sensor output. The syntax must match the sensor output exactly (for example, spaces must be represented accurately).
+message_regex_patterns: | A list of one or more regex patterns for parsing the sensor data messages.
 
                              
 Note: If a sensor outputs more than one message style, the regex patterns must be written such that they match with only the correct message.
@@ -55,10 +50,9 @@ Strings should be enclosed in single quotes ('this is an example string').
 All fields are optional.
 Indents must be spaces, not tabs, as per the yaml convention.
 
+-----------------------------------------
 
----- ---- ---- ---- ----
-
-2. validate_sensor_regex_yaml.py
+### validate_sensor_regex_yaml.py
 
 This script may be used to verify
 the contents of the sensor_regex_patterns.yaml file.
@@ -77,17 +71,18 @@ Usage:
 Requires:
     pyyaml (pip install pyyaml)
 
+-----------------------------------------
 
----- ---- ---- ---- ----
-
-3. extract_sensor_regex.py
+### extract_sensor_regex.py
 
 Extract the regex patterns for a specific sensor
 from the sensor_regex_patterns yaml file.
 
 Usage examples:
   > python extract_sensor_regex.py --sensor '4300'
+
   > python extract_sensor_regex.py --sensor 'WindMaster Pro'
+
   > python extract_sensor_regex.py
 
 where the 'sensor' argument is a sensor model name that corresponds
@@ -99,15 +94,15 @@ this script will output a list of all available models.
 Requires:
     pyyaml (pip install pyyaml)
 
----- ---- ---- ---- ----
+-----------------------------------------
 
-4. check_regex_format.py
+### check_regex_format.py
 
 Check whether a string matches a given regex pattern.
 
 Usage example:
   > python check_regex_format.py \
-      --format '^$GPGLL,(?P<latitude>\-?\d+\.\d+),(?P<lat_dir>[NS]),(?P<longitude>\-?\d+\.\d+),(?P<lon_dir>[EW])$' \
+      --format '^\WGPGLL,(?P\<latitude\>\\-?\d+\\.\d+),(?P\<lat_dir\>[NS]),(?P\<longitude\>\\-?\d+\\.\d+),(?P\<lon_dir\>[EW])$' \
       --string '$GPGLL,2203.672,S,01759.539,W'
 
 *** NOTE: Use single (not double) quotes on your strings,
@@ -116,8 +111,8 @@ as the start of a shell variable.
 
 This is a utility script that is imported by validate_sensor_regex_yaml.py.
 
------------------------------------------
 
+-----------------------------------------
 
 
 ## Common Regex Metacharacters
@@ -153,20 +148,20 @@ $    	 | end of line	|
 Regex                          | Use Case                                    | Matches
 --- | --- | ---
 \d+	                           | positive integer	                           | 1987
-\d+\.\d+	                     | positive float	                             | 1562.543789234
-\-?\d+\.\d+	                   | float (positive or negative)	               | -89.321
-\d+(\.\d+)?	                   | positive integer or float	                 | 543.00 and 543
+\d+\\.\d+	                     | positive float	                             | 1562.543789234
+\\-?\d+\\.\d+	                   | float (positive or negative)	               | -89.321
+\d+(\\.\d+)?	                   | positive integer or float	                 | 543.00 and 543
 [0-9T:\-]{19}Z	               | ISO datetime (UTC)	                         | 2021-11-09T16:52:23Z
 (\d+\s+){5}\d+	               | set of space-delimited positive integers	   | 98 23  521 92 1
-\*(?P<checksum>[0-9A-F]{2})	   | checksum	                                   | *9F
-(?P<name>pattern)?	           | capture a named group as usual, but still works if the field is empty (e.g. $GPVTG,123.4,T,,M,0.00,N,0.00,K*4E)	 | None (if empty)
+\\*(?P\<checksum\>[0-9A-F]{2})	   | checksum	                                   | *9F
+(?P\<name\>pattern)?	           | capture a named group as usual, but still works if the field is empty | None (if empty)
 \W	                           |                                             | $
 
 -----------------------------------------
 
 ## Tips
 
-To match "$" in a sensor message string (such as in '$GPGGA') use \W rather than \$.  Dollar signs in regex strings can cause issues later (they are treated as special characters by some interpreters). Using \W avoids this headache.
+To match "$" in a sensor message string (such as in '$GPGGA') use \W rather than \\$.  Dollar signs in regex strings can cause issues later (they are treated as special characters by some interpreters). Using \W avoids this headache.
 
 -----------------------------------------
 
