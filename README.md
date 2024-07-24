@@ -1,5 +1,5 @@
 
-# sensor_regex
+### sensor_regex
 
 Regex (Regular Expression) patterns for parsing oceanographic, navigation, and meteorological sensor ASCII data messages.
 
@@ -11,11 +11,11 @@ A summary of commonly-used regex metacharacters and sequences are provided at th
 
 -----------------------------------------
 
-# files and scripts
+## files and scripts
 
 ---- ---- ---- ---- ----
 
-1. sensor_regex_patterns.yaml
+# sensor_regex_patterns.yaml
 
 This yaml file contains regex patterns and sample data messages for a variety of oceanographic and meteorological sensors.
 The contents are ordered alphabetically by manufacturer, then alphabetically by sensor model.
