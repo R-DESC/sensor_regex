@@ -40,6 +40,21 @@ sensors:
 
 
     # ---------------------------------------------------------
+    # Apollo Scitech
+
+    'AS-P3':
+        NERC_L22_label: 'Apollo SciTech AS-P3 combined pCO2 analyser and underway system'
+        pseudonyms:
+        manufacturers:
+        - 'Apollo Scitech'
+        - 'LI-COR, Inc.'
+        message_samples:
+        - '[#v2.0[\#2024/07/28 16:43:28\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#Manual\#,\#Air\#,\#NaN\#,\#NaN\#,\#495.704\#,\#11.0068\#,\#39.9202\#,\#54.9995\#,\#0\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#18.3755\#,\#0.10631\#,\#0.6092\#,\#102.00\#,\#1006.73\#,\#16.66\#,\#0.01\#,\#6.66\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#OFF | OFF\#,\#\#,\#180\#,\#100\#,\#Continuous\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#,\#\#]#]'
+        message_regex_patterns:
+        - '^\[\Wv\d+\.\d+\[\W\W(?P<instrument_datetime>\d\d\d\d/\d\d/\d\d \d\d:\d\d:\d\d)\W\W,\W\W(?P<gps_datetime>[^,]*)\W\W,\W\W(?P<latitude>[^,]*)\W\W,\W\W(?P<longitude>[^,]*)\W\W,\W\W(?P<garmin_status>[^,]*)\W\W,\W\W(?P<garmin_datetime>[^,]*)\W\W,\W\W(?P<garmin_latitude>[^,]*)\W\W,\W\W(?P<garmin_longitude>[^,]*)\W\W,\W\W(?P<ship_gps_format>[^,]*)\W\W,\W\W(?P<ship_time>[^,]*)\W\W,\W\W(?P<ship_latitude>[^,]*)\W\W,\W\W(?P<ship_longitude>[^,]*)\W\W,\W\W(?P<mode>\w+)\W\W,\W\W(?P<source>[\w\s\-\.]+)\W\W,\W\W(?P<stddev>[Na\d\.]+)\W\W,\W\W(?P<comp_CO2>[\d\.\w]*)\W\W,\W\W(?P<CO2>\d+\.\d+)\W\W,\W\W(?P<H2O>\d+\.\d+)\W\W,\W\W(?P<cavity_pressure>\d+\.\d+)\W\W,\W\W(?P<cavity_temp>\-?\d+\.\d+)\W\W,\W\W(?P<diagnostic>\d+)\W\W,(?P<li_7810>(\W\W[^,]*\W\W,){6})(?P<li_7000>(\W\W[^,]*\W\W,){7})(?P<li_850>(\W\W[^,]*\W\W,){6})(?P<picarro>(\W\W[^,]*\W\W,){6})\W\W(?P<water_temp>(\-?\d+\.\d+)?)\W\W,\W\W(?P<conductivity_Sm>(\d+\.\d+)?)\W\W,\W\W(?P<salinity_psu>(\d+\.\d+)?)\W\W,\W\W(?P<gas_flow_rate>\d+\.\d+)\W\W,\W\W(?P<equilibrator_pressure>(\d+\.\d+)?)\W\W,\W\W(?P<equilibrator_temp>(\-?\d+\.\d+)?)\W\W,\W\W(?P<water_flow_rate>(\d+\.\d+)?)\W\W,\W\W(?P<cooling_pad_temp>(\-?\d+\.\d+)?)\W\W,(?P<fluorescence>(\W\W[^,]*\W\W,){3})(?P<oxygen>(\W\W[^,]*\W\W,){5})(?P<durafet>(\W\W[^,]*\W\W,){2})\W\W(?P<operator>(\w*)?)\W\W,\W\W(?P<note>[^,]*)\W\W,\W\W(?P<overflow_alarm>(\w*))\s?\|?\s?(?P<shutoff_valve>(\w*))\W\W,\W\W(?P<number_measurements>\d*)\s?\|?\s?(?P<sd_measurements>[\d\.]*)\W\W,\W\W(?P<measurement_interval>\d*)\s?\|?\s?(?P<purge_interval>\d*)\W\W,\W\W(?P<measurement_flow_rate>\d*)\s?\|?\s?(?P<purge_flow_rate>\d*)\W\W,\W\W(?P<test_type>\w+)\W\W,(?P<weather_station>(\W\W[^,]*\W\W,){9})(?P<li_7820>(\W\W[^,]*\W\W,){4}\W\W[^,]*\W\W)\]\W\]$'
+
+
+    # ---------------------------------------------------------
     # Bell Aerospace
 
     'BGM-3':
