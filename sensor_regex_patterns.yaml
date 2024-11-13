@@ -698,6 +698,7 @@ sensors:
         - '$GPGGA,175241,4135.1885,N,07124.6032,W,2,12,1.3,17.7,M,,M,,*79'
         - '$GPGGA,032529,4129.551,N,07125.116,W,1,08,1.20,12,M,,,,*12'
         - '$GPGGA,185300.21,4738.972991,N,12218.790294,W,2,12,0.9,-0.31,M,-18.41,M,1.2,0001*55'
+        - '$GPGGA,003254.41,0316.369007,N,14001.644270,W,1,12,0.4,1.50,M,-2.89,M,,*6E'
         - '$GPHDT,310.22,T*07'
         - '$GPRMC,214049.00,A,6007.173503,N,14925.535374,W,0.071,39.5,1302124,,D,V*11'
         - '$GPVTG,315.5,T,329.8,M,0.0,N,0.1,K*4D'
@@ -707,7 +708,7 @@ sensors:
         message_regex_patterns:
         - '^\WGPGGA,(?P<utc_position_fix>\d+),(?P<latitude>\d+\.\d+),(?P<latitude_dir>[NS]),(?P<longitude>\d+\.\d+),(?P<longitude_dir>[EW]),(?P<gps_quality_indicator>\d+),(?P<num_sat_vis>\d+),(?P<hdop>\d+\.\d+),(?P<ortho_height>\-?\d+\.\d+),M,(?P<geoid_separation>\-?\d+\.\d+)?,M,(?P<age>[\d\.]*)?,\*(?P<checksum>[0-9A-F]{2})$'
         - '^\WGPGGA,(?P<utc_position_fix>\d+),(?P<latitude>\d+\.\d+),(?P<latitude_dir>[NS]),(?P<longitude>\d+\.\d+),(?P<longitude_dir>[EW]),(?P<gps_quality_indicator>\d+),(?P<num_sat_vis>\d+),(?P<hdop>\d+\.\d+),(?P<ortho_height>\-?\d+),M,(?P<geoid_separation>\-?\d+\.\d+)?,\w*,(?P<age>\d*)?,\*(?P<checksum>[0-9A-F]{2})$'
-        - '^\WGPGGA,(?P<utc_position_fix>\d+\.\d+),(?P<latitude>\d+\.\d+),(?P<latitude_dir>[NS]),(?P<longitude>\d+\.\d+),(?P<longitude_dir>[EW]),(?P<gps_quality_indicator>\d+),(?P<num_sat_vis>\d+),(?P<hdop>\d+\.\d+),(?P<ortho_height>\-?\d+\.\d+),M,(?P<geoid_separation>\-?\d+\.\d+),M,(?P<age>[\d\.]*),\d{4}\*(?P<checksum>[0-9A-F]{2})$'
+        - '^\WGPGGA,(?P<utc_position_fix>\d+\.\d+),(?P<latitude>\d+\.\d+),(?P<latitude_dir>[NS]),(?P<longitude>\d+\.\d+),(?P<longitude_dir>[EW]),(?P<gps_quality_indicator>\d+),(?P<num_sat_vis>\d+),(?P<hdop>\d+\.\d+),(?P<ortho_height>\-?\d+\.\d+),M,(?P<geoid_separation>\-?\d+\.\d+),M,(?P<age>[\d\.]*)?,(\d{4})?\*(?P<checksum>[0-9A-F]{2})$'
         - '^\WGPHDT,(?P<heading>\d+\.\d+),T\*(?P<checksum>[0-9A-F]{2})$'
         - '^\WGPRMC,(?P<utc_position_fix_rmc>\d+\.\d+),(?P<status_rmc>[AV]),(?P<latitude_rmc>\d+\.\d+),(?P<latitude_dir_rmc>[NS]),(?P<longitude_rmc>\d+\.\d+),(?P<longitude_dir_rmc>[EW]),(?P<sog_knots_rmc>\d+\.\d+)?,(?P<cog_true_rmc>\d+\.\d+)?,(?P<day_rmc>\d{2})(?P<month_rmc>\d{2})\d(?P<year_rmc>\d{2}),,(?P<mode_rmc>[ADE]),\w*\*(?P<checksum>[0-9A-F]{2})$'
         - '^\WGPVTG,(?P<cog_true>\d+\.\d+)?,T,(?P<cog_magnetic>\d+\.\d+)?,M,(?P<sog_knots>\d+\.\d+)?,N,(?P<sog_kmhr>\d+\.\d+)?,K\*(?P<checksum>[0-9A-F]{2})$'
