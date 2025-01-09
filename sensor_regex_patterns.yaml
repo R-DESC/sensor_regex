@@ -512,7 +512,7 @@ sensors:
         message_samples:
         - 'SEAFET02101, 2020-08-25T17:12:20, 11, 0000, 6.4765, 6.9612, -0.930214, -0.951255, 21.6808, 22.2, 21.6'
         message_regex_patterns:
-        - '^SEAFET(?P<framesync>\w+),\s*(?P<instrument_datetime>[\dT\-:]{19}),\s+(?P<sample_number>\d+),\s+(?P<data_error_flags>\w+),\s*(?P<ph_internal>\d+\.\d+),\s*(?P<ph_external>\d+\.\d+),\s*(?P<Vrs_ext>\-?\d+\.\d+),\s*(?P<Vrs_int>\-?\d+\.\d+),\s*(?P<ph_temperature>\-?\d+\.\d+),\s*(?P<internal_RH>\d+\.\d+),\s*(?P<internal_temperature>\-?\d+\.\d+)$'
+        - '^SEAFET(?P<framesync>\w+),\s*(?P<instrument_datetime>[\dT\-:]{19}),\s+(?P<sample_number>\s*\-?\d+),\s+(?P<data_error_flags>\w+),\s*(?P<ph_internal>\d+\.\d+),\s*(?P<ph_external>\d+\.\d+),\s*(?P<Vrs_ext>\-?\d+\.\d+),\s*(?P<Vrs_int>\-?\d+\.\d+),\s*(?P<ph_temperature>\-?\d+\.\d+),\s*(?P<internal_RH>\d+\.\d+),\s*(?P<internal_temperature>\-?\d+\.\d+)$'
 
     'SUNA V2':
         NERC_L22_label: 'Satlantic Submersible Ultraviolet Nitrate Analyser V2 {SUNA V2} nutrient analyser series'
