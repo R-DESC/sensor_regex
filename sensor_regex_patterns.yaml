@@ -243,9 +243,10 @@ sensors:
         message_samples:
         - '605,100,1,0,1,20,20,0,220,120,0,0,0,0,0,0,907,3,0,909,0,0,2422,26400,1282,61616,0,0,0,1,0,1,0,2798,1,3,16,16,1,0,0,19,95,201,1,10'
         - '605,195,14.1,-0.5,12.0,1,1,0'
+        - '605,196,190,26.2,11.9,0,1,0'
         message_regex_patterns:
         - '^(?P<device_type>\d+),(?P<datamodel_version>\d+),(?P<operational_mode>\d+),(?P<status_flags>\d+),(?P<scale_factor>\d+),(?P<sensor1_data>\d+),(?P<raw_sensor1_data>\d+),(?P<stdev_sensor1>\d+),(?P<body_temp_C>\d+),(?P<ext_power_sensor>\d+),(?P<sensor2_data>\d+),(?P<raw_sensor2_data>\d+),(?P<stdev_sensor2>\d+),(?P<body_temp_K>\d+),(?P<aux_input2>\d+),(?P<aux_input3>\d+),(?P<DAC_output_voltage>\d+),(?P<selected_DAC_input>\d+),(?P<ADC1_counts_MSB>\d+),(?P<ADC1_counts_LSB>\d+),(?P<ADC2_counts_MSB>\d+),(?P<ADC2_counts_LSB>\d+),(?P<ADC3_counts_MSB>\d+),(?P<ADC3_counts_LSB>\d+),(?P<ADC4_counts_MSB>\d+),(?P<ADC4_counts_LSB>\d+),(?P<error_code>\d+),(?P<protocol_error>\d+),(?P<error_count_pri01>\d+),(?P<error_count_pri02>\d+),(?P<restart_count>\d+),(?P<false_start_count>\d+),(?P<sensor_on_time>\d+),(?P<sensor_on_timel>\d+),(?P<def_scale_factor>\d+),(?P<factory_1>\d+),(?P<factory_2>\d+),(?P<factory_3>\d+),(?P<factory_4>\d+),(?P<factory_5>\d+),(?P<factory_6>\d+),(?P<batch_number>\d+),(?P<serial_number>\d+),(?P<software_version>\d+),(?P<hardware_version>\d+),(?P<node_id>\d+)$'
-        - '^\d+,\d+,(?P<rad>\-?\d+\.\d+),(?P<body_temp>\-?\d+\.\d+),(?P<ext_volts>\d+\.\d+),\d+,(?P<op_mode>\d+),(?P<status>\d+)$'
+        - '^\d+,\d+,(?P<rad>\-?\d+\.?\d*),(?P<body_temp>\-?\d+\.\d+),(?P<ext_volts>\d+\.\d+),\d+,(?P<op_mode>\d+),(?P<status>\d+)$'
 
 
     # ---------------------------------------------------------
