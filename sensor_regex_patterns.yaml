@@ -706,6 +706,7 @@ sensors:
         - '$GPVTG,161.50,T,146.18,M,0.0,N,0.0,K,D*2F'
         - '$GPVTG,180,T,197,M,00.1,N,00.1,K*48'
         - '$GPZDA,185300.21,07,02,2023,,*6C'
+        - '$PASHR,ATT,425544.00,70.92409,0.65576,-0.44874,0.0062,0.0120,0*38'
         message_regex_patterns:
         - '^\WGPGGA,(?P<utc_position_fix>\d+),(?P<latitude>\d+\.\d+),(?P<latitude_dir>[NS]),(?P<longitude>\d+\.\d+),(?P<longitude_dir>[EW]),(?P<gps_quality_indicator>\d+),(?P<num_sat_vis>\d+),(?P<hdop>\d+\.\d+),(?P<ortho_height>\-?\d+\.\d+),M,(?P<geoid_separation>\-?\d+\.\d+)?,M,(?P<age>[\d\.]*)?,\*(?P<checksum>[0-9A-F]{2})$'
         - '^\WGPGGA,(?P<utc_position_fix>\d+),(?P<latitude>\d+\.\d+),(?P<latitude_dir>[NS]),(?P<longitude>\d+\.\d+),(?P<longitude_dir>[EW]),(?P<gps_quality_indicator>\d+),(?P<num_sat_vis>\d+),(?P<hdop>\d+\.\d+),(?P<ortho_height>\-?\d+),M,(?P<geoid_separation>\-?\d+\.\d+)?,\w*,(?P<age>\d*)?,\*(?P<checksum>[0-9A-F]{2})$'
@@ -716,3 +717,4 @@ sensors:
         - '^\WGPVTG,(?P<cog_true>\d+\.\d+)?,T,(?P<cog_magnetic>\d+\.\d+)?,M,(?P<sog_knots>\d+\.\d+)?,N,(?P<sog_kmhr>\d+\.\d+)?,K,?\w*\*(?P<checksum>[0-9A-F]{2})$'
         - '^\WGPVTG,(?P<cog_true>\d+)?,T,(?P<cog_magnetic>\d+)?,M,(?P<sog_knots>\d+\.\d+)?,N,(?P<sog_kmhr>\d+\.\d+)?,K\*(?P<checksum_2>[0-9A-F]{2})$'
         - '^\WGPZDA,(?P<utc_time>\d+\.\d+),(?P<day>\d{2}),(?P<month>\d{2}),(?P<year>\d{4}),(?P<tzoffset_hours>\d{0,2}),(?P<tzoffset_mins>\d{0,2})\*(?P<checksum>[0-9A-F]{2})$'
+        - '^\WPASHR,ATT,(?P<week_seconds>\d+\.\d+),(?P<yaw>\-?\d+\.\d+),(?P<pitch>\-?\d+\.\d+),(?P<roll>\-?\d+\.\d+),(?P<mrms>\-?\d+\.\d+),(?P<brms>\-?\d+\.\d+),(?P<reaquisition>\d+)\*(?P<checksum_pashr>[0-9A-Fa-f]{2})$'
