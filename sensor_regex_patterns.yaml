@@ -306,7 +306,7 @@ sensors:
           - '^\WMGHDT,(?P<heading>\d+\.\d+),T\*(?P<checksum>[0-9A-F]{2})$'
           - '^\WMGHCR,(?P<heading>\d+\.\d+),.*\*(?P<checksum>[0-9A-F]{2})$'
           - '^\WMGTHS,(?P<heading_true_actual>\d+\.\d+),(?P<heading_status>[AEMSV])\*(?P<checksum>[0-9A-F]{2})$'
-          - '^\WMGROT,(?P<rate_of_turn>\d+\.\d+),(?P<rot_status>[AV])\*(?P<checksum>[0-9A-F]{2})$'
+          - '^\WMGROT,(?P<rate_of_turn>\-?\d+\.\d+),(?P<rot_status>[AV])\*(?P<checksum>[0-9A-F]{2})$'
           - '^\WPSXN,20,(?P<horiz_qual>\d*),(?P<hgt_qual>\d*),(?P<head_qual>\d*),(?P<rp_qual>\d*)\*(?P<checksum>[0-9A-F]{2})$'
           - '^\WPSXN,23,(?P<roll>\-?\d+\.\d+)?,(?P<pitch>\-?\d+\.\d+)?,(?P<head>\-?\d+\.\d+)?,(?P<heave>\-?\d+\.\d+)?\*(?P<checksum>[0-9A-F]{2})$'
 
